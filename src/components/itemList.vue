@@ -7,7 +7,7 @@
             <img :src="item.image" alt="image" class="cards__items__pic" />
             <h2>{{ item.title }}</h2>
             <p>{{ item.description }}</p>
-            <div>{{ item.price }}</div>
+            <div>{{ item.price }}<span> руб.</span></div>
             <button @click="remove(item.id)" class="cards__items__btn">
               <img src="img/delete.svg" alt="deleteButton" />
             </button>
