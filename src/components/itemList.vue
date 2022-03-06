@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
     <transition-group name="list">
       <div v-if="show" class="cards">
         <transition-group name="cards">
@@ -47,10 +47,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url("https://fonts.googleapis.com/css2?family=Neonderthaw&family=Roboto+Condensed&family=Source+Sans+Pro:wght@200;400;600&display=swap");
+.wrapper {
+  width: 100%;
+}
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  max-width: 1028px;
   width: 100%;
   gap: 16px;
 }
@@ -58,12 +62,10 @@ export default {
 .cards__items__pic {
   width: 100%;
   min-height: 200px;
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
+  border: 4 4 0 0;
 }
 
 .cards__items {
-  max-width: 332px;
   width: 100%;
   min-height: 423px;
   background: #fffefb;
@@ -74,33 +76,32 @@ export default {
 }
 
 .cards__items h2 {
+  font-family: "Source Sans Pro";
   font-weight: 600;
   font-size: 20px;
   line-height: 25px;
   color: #3f3f3f;
+  padding-top: 16px;
   padding-left: 16px;
-  margin: 0;
-  margin-top: 16px;
 }
 
 .cards__items p {
-  max-width: 300px;
+  font-family: "Source Sans Pro";
   font-size: 16px;
   line-height: 20px;
   color: #3f3f3f;
+  padding-top: 16px;
   padding-left: 16px;
-  margin: 0;
-  margin-top: 16px;
 }
 
 .cards__items div {
+  font-family: "Source Sans Pro";
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
   color: #3f3f3f;
+  padding-top: 32px;
   padding-left: 16px;
-  margin: 0;
-  margin-top: 32px;
 }
 
 .cards__items__btn {
@@ -162,17 +163,14 @@ export default {
   }
 }
 
-@media (max-width: 965px) {
+@media (max-width: 906px) {
   .cards {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 549px) {
   .cards {
-    align-items: center;
     margin-top: 70px;
   }
 }

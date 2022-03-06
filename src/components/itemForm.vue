@@ -1,27 +1,42 @@
 <template>
   <div class="form">
-    <form action="#" @submit.prevent @submit="validateForm">
-      <h2>Наименование товара</h2>
+    <form
+      class="form__wrapper"
+      action="#"
+      @submit.prevent
+      @submit="validateForm"
+    >
+      <label for="1">Наименование товара</label>
       <input
+        id="1"
         v-model.trim="card.title"
         type="text"
         placeholder="Введите наименование товара"
       />
-      <h2>Описание товара</h2>
+      <label for="2">Описание товара</label>
       <input
+        id="2"
         v-model.trim="card.description"
         type="text"
         placeholder="Введите описание товара"
       />
-      <h2>Ссылка на изображение товара</h2>
+      <label for="3">Ссылка на изображение товара</label>
       <input
+        id="3"
         v-model.trim="card.image"
         type="text"
         placeholder="Введите ссылку"
       />
-      <h2>Цена товара</h2>
-      <input v-model.trim="card.price" type="text" placeholder="Введите цену" />
-      <button @click="createPost">Добавить товар</button>
+      <label for="4">Цена товара</label>
+      <input
+        id="4"
+        v-model="card.price"
+        type="number"
+        placeholder="Введите цену"
+      />
+      <button @click="createPost" :disabled="isBtnDisabled">
+        Добавить товар
+      </button>
     </form>
   </div>
 </template>
@@ -37,6 +52,17 @@ export default {
         price: "",
       },
     };
+  },
+
+  computed: {
+    isBtnDisabled() {
+      return (
+        this.card.image.length === 0 ||
+        this.card.title.length === 0 ||
+        this.card.description.length === 0 ||
+        this.card.price.length === 0
+      );
+    },
   },
 
   methods: {
@@ -55,6 +81,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url("https://fonts.googleapis.com/css2?family=Neonderthaw&family=Roboto+Condensed&family=Source+Sans+Pro:wght@200;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Neonderthaw&family=Roboto+Condensed&family=Source+Sans+Pro:wght@200;400;600&display=swap");
+
 .form {
   max-width: 332px;
   width: 100%;
@@ -65,43 +94,50 @@ export default {
   border-radius: 4px;
 }
 
-.form h2 {
+.form__wrapper {
+  max-width: 284px;
+  margin: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form label {
+  font-family: "Source Sans Pro";
   font-size: 10px;
   line-height: 13px;
   letter-spacing: -0.02em;
   color: #49485e;
-  margin-left: 24px;
   position: relative;
-  margin-bottom: 4px;
+  padding-bottom: 4px;
 }
 
-.form h2:not(:nth-of-type(2))::after {
+.form label:not(:nth-of-type(2))::after {
   content: url("../assets/image/dot.svg");
   margin-left: 1px;
   position: absolute;
-  bottom: 6px;
+  bottom: 9px;
 }
 
-.form h2:not(:first-of-type) {
-  margin-top: 16px;
-}
-
-.form h2:first-of-type {
-  padding-top: 24px;
+.form label:first-of-type {
   margin: 0;
-  margin-left: 24px;
-  margin-bottom: 4px;
+  padding-bottom: 4px;
 }
 
 .form input {
-  width: 88%;
   background: #fffefb;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   border: none;
   min-height: 36px;
-  margin-left: 24px;
   padding-left: 16px;
+}
+
+.form input:hover {
+  background: #e5e5e5;
+}
+
+.form input:not(:last-of-type) {
+  margin-bottom: 16px;
 }
 
 .form input:nth-of-type(2) {
@@ -114,6 +150,7 @@ export default {
 }
 
 .form input::placeholder {
+  font-family: "Source Sans Pro";
   font-size: 12px;
   line-height: 15px;
   color: #b4b4b4;
@@ -123,7 +160,13 @@ export default {
   background-color: #e6fff7;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
 .form button {
+  font-family: "Inter";
   font-weight: 600;
   font-size: 12px;
   line-height: 15px;
@@ -131,12 +174,11 @@ export default {
   letter-spacing: -0.02em;
   color: #b4b4b4;
   border: none;
-  width: 88%;
+  width: 100%;
   min-height: 36px;
   background: #eeeeee;
   border-radius: 10px;
   margin-top: 24px;
-  margin-left: 24px;
 }
 
 .form button:hover {
