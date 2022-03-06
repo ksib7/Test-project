@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <transition-group name="list">
-      <div v-if="show" class="cards">
+      <div class="cards">
         <transition-group name="cards">
           <div class="cards__items" v-for="item in cards" :key="item.id">
             <img :src="item.image" alt="image" class="cards__items__pic" />
@@ -22,25 +22,9 @@
 export default {
   props: ["cards"],
 
-  data() {
-    return {
-      show: false,
-    };
-  },
-
-  mounted() {
-    this.showCards();
-  },
-
   methods: {
     remove(id) {
       this.$emit("remove", id);
-    },
-
-    showCards() {
-      setTimeout(() => {
-        this.show = true;
-      }, 700);
     },
   },
 };

@@ -1,11 +1,17 @@
 <template>
   <div class="container">
+    <preloader-page />
     <router-view :cards="cards" />
   </div>
 </template>
 
 <script>
+import preloaderPage from "./components/preloaderPage.vue";
 export default {
+  components: {
+    preloaderPage,
+  },
+
   data() {
     return {
       cards: [],
