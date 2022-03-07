@@ -5,6 +5,7 @@
       action="#"
       @submit.prevent
       @submit="validateForm"
+      required="required"
     >
       <label for="1">Наименование товара</label>
       <input
@@ -12,6 +13,7 @@
         v-model.trim="card.title"
         type="text"
         placeholder="Введите наименование товара"
+        required="required"
       />
       <label for="2">Описание товара</label>
       <input
@@ -19,6 +21,7 @@
         v-model.trim="card.description"
         type="text"
         placeholder="Введите описание товара"
+        required="required"
       />
       <label for="3">Ссылка на изображение товара</label>
       <input
@@ -26,6 +29,7 @@
         v-model.trim="card.image"
         type="text"
         placeholder="Введите ссылку"
+        required="required"
       />
       <label for="4">Цена товара</label>
       <input
@@ -33,6 +37,7 @@
         v-model="card.price"
         type="number"
         placeholder="Введите цену"
+        required="required"
       />
       <button @click="createPost" :disabled="isBtnDisabled">
         Добавить товар
@@ -172,11 +177,11 @@ input[type="number"]::-webkit-outer-spin-button {
   line-height: 15px;
   text-align: center;
   letter-spacing: -0.02em;
-  color: #b4b4b4;
   border: none;
   width: 100%;
   min-height: 36px;
-  background: #eeeeee;
+  color: #ffffff;
+  background-color: #7bae73;
   border-radius: 10px;
   margin-top: 24px;
 }
@@ -190,5 +195,10 @@ input[type="number"]::-webkit-outer-spin-button {
 .form button:active {
   background: black;
   color: white;
+}
+
+input:invalid ~ button {
+  color: #b4b4b4;
+  background-color: #eeeeee;
 }
 </style>
