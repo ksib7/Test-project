@@ -187,14 +187,16 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .form button:hover {
-  opacity: 0.6;
-  color: black;
   cursor: pointer;
 }
 
 .form button:active {
   background: black;
   color: white;
+}
+
+input:valid ~ button:hover {
+  opacity: 0.6;
 }
 
 input:invalid ~ button {
