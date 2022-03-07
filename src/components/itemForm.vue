@@ -1,12 +1,6 @@
 <template>
   <div class="form">
-    <form
-      class="form__wrapper"
-      action="#"
-      @submit.prevent
-      @submit="validateForm"
-      required="required"
-    >
+    <form class="form__wrapper" action="#" @submit.prevent>
       <label for="1">Наименование товара</label>
       <input
         id="1"
@@ -159,10 +153,6 @@ export default {
   font-size: 12px;
   line-height: 15px;
   color: #b4b4b4;
-}
-
-.form input:focus {
-  background-color: #e6fff7;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
