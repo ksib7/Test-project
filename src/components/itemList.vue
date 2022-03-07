@@ -1,20 +1,18 @@
 <template>
   <div class="wrapper">
-    <transition-group name="list">
-      <div class="cards">
-        <transition-group name="cards">
-          <div class="cards__items" v-for="item in cards" :key="item.id">
-            <img :src="item.image" alt="image" class="cards__items__pic" />
-            <h2>{{ item.title }}</h2>
-            <p>{{ item.description }}</p>
-            <div>{{ item.price }}<span> руб.</span></div>
-            <button @click="remove(item.id)" class="cards__items__btn">
-              <img src="img/delete.svg" alt="deleteButton" />
-            </button>
-          </div>
-        </transition-group>
-      </div>
-    </transition-group>
+    <div class="cards">
+      <transition-group name="cards">
+        <div class="cards__items" v-for="item in cards" :key="item.id">
+          <img :src="item.image" alt="image" class="cards__items__pic" />
+          <h2>{{ item.title }}</h2>
+          <p>{{ item.description }}</p>
+          <div>{{ item.price }}<span> руб.</span></div>
+          <button @click="remove(item.id)" class="cards__items__btn">
+            <img src="img/delete.svg" alt="deleteButton" />
+          </button>
+        </div>
+      </transition-group>
+    </div>
   </div>
 </template>
 
@@ -111,20 +109,6 @@ export default {
 
 .cards__items:active .cards__items__btn {
   opacity: 0.6;
-}
-
-.list-item {
-  display: inline-block;
-  margin-right: 10px;
-}
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.5s ease;
-}
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-  transform: translateY(30px);
 }
 
 .cards-item {
