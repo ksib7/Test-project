@@ -6,7 +6,7 @@
     </div>
     <div class="items">
       <itemForm @add="addItem" @submit="validateForm"></itemForm>
-      <itemList @remove="removeItem" :cards="sortedItems"></itemList>
+      <itemList @remove="removeItem" :cards="cards"></itemList>
     </div>
   </div>
 </template>
@@ -28,14 +28,6 @@ export default {
         { value: "max", name: "По цене max" },
       ],
     };
-  },
-
-  computed: {
-    sortedItems() {
-      return [...this.cards].sort((item1, item2) =>
-        item1[this.selectedSort]?.localCompare(item2[this.selectedSort])
-      );
-    },
   },
 
   components: {
