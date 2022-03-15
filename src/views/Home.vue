@@ -5,8 +5,8 @@
       <itemSelect v-model="selectedSort" :options="sortOptions" />
     </div>
     <div class="items">
-      <itemForm @add="addItem"></itemForm>
-      <itemList @remove="removeItem" :cards="sortedItems"></itemList>
+      <itemForm @add="addItem" @submit="validateForm"></itemForm>
+      <itemList @remove="removeItem" :cards="cards"></itemList>
     </div>
   </div>
 </template>
@@ -28,14 +28,6 @@ export default {
         { value: "max", name: "По цене max" },
       ],
     };
-  },
-
-  computed: {
-    sortedItems() {
-      return [...this.cards].sort((item1, item2) =>
-        item1[this.selectedSort]?.localCompare(item2[this.selectedSort])
-      );
-    },
   },
 
   components: {
@@ -60,28 +52,79 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url("https://fonts.googleapis.com/css2?family=Neonderthaw&family=Roboto+Condensed&family=Source+Sans+Pro:wght@200;400;600&display=swap");
+
 .items {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   gap: 16px;
 }
 
 .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   margin-bottom: 16px;
 }
 
 .header h1 {
+  font-family: "Source Sans Pro";
+  font-style: normal;
   font-weight: 600;
   font-size: 28px;
   line-height: 35px;
   color: #3f3f3f;
 }
 
+.header button {
+  max-width: 121px;
+  width: 100%;
+  min-height: 32px;
+  border: none;
+  font-size: 12px;
+  line-height: 15px;
+  color: #b4b4b4;
+  background: #fffefb;
+  -webkit-box-shadow: 0px 2px 5px rgb(0 0 0 / 10%);
+  box-shadow: 0px 2px 5px rgb(0 0 0 / 10%);
+  border-radius: 4px;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+  text-align: center;
+}
+
+.header button::after {
+  content: url("../assets/image/arrow-down.svg");
+  padding-left: 5px;
+}
+
+.header button:hover {
+  opacity: 0.6;
+  color: black;
+  cursor: pointer;
+}
+
+.header button:active {
+  background: black;
+  color: white;
+}
+
 @media (max-width: 549px) {
   .items {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
   }
 

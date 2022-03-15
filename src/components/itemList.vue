@@ -1,20 +1,18 @@
 <template>
-  <div>
-    <transition-group name="list">
-      <div v-if="show" class="cards">
-        <transition-group name="cards">
-          <div class="cards__items" v-for="item in cards" :key="item.id">
-            <img :src="item.image" alt="image" class="cards__items__pic" />
-            <h2>{{ item.title }}</h2>
-            <p>{{ item.description }}</p>
-            <div>{{ item.price }}<span> руб.</span></div>
-            <button @click="remove(item.id)" class="cards__items__btn">
-              <img src="img/delete.svg" alt="deleteButton" />
-            </button>
-          </div>
-        </transition-group>
-      </div>
-    </transition-group>
+  <div class="wrapper">
+    <div class="cards">
+      <transition-group name="cards">
+        <div class="cards__items" v-for="item in cards" :key="item.id">
+          <img :src="item.image" alt="image" class="cards__items__pic" />
+          <h2>{{ item.title }}</h2>
+          <p>{{ item.description }}</p>
+          <div>{{ item.price }}<span> руб.</span></div>
+          <button @click="remove(item.id)" class="cards__items__btn">
+            <img src="img/delete.svg" alt="deleteButton" />
+          </button>
+        </div>
+      </transition-group>
+    </div>
   </div>
 </template>
 
@@ -22,35 +20,25 @@
 export default {
   props: ["cards"],
 
-  data() {
-    return {
-      show: false,
-    };
-  },
-
-  mounted() {
-    this.showCards();
-  },
-
   methods: {
     remove(id) {
       this.$emit("remove", id);
-    },
-
-    showCards() {
-      setTimeout(() => {
-        this.show = true;
-      }, 700);
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+@import url("https://fonts.googleapis.com/css2?family=Neonderthaw&family=Roboto+Condensed&family=Source+Sans+Pro:wght@200;400;600&display=swap");
+.wrapper {
+  width: 100%;
+}
+
 .cards {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 16px 1fr 16px 1fr;
   grid-template-columns: 1fr 1fr 1fr;
-  max-width: 1028px;
   width: 100%;
   gap: 16px;
 }
@@ -58,15 +46,15 @@ export default {
 .cards__items__pic {
   width: 100%;
   min-height: 200px;
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
+  border: 4 4 0 0;
 }
 
 .cards__items {
-  max-width: 332px;
   width: 100%;
   min-height: 423px;
   background: #fffefb;
+  -webkit-box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04),
+    0px 6px 10px rgba(0, 0, 0, 0.02);
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04),
     0px 6px 10px rgba(0, 0, 0, 0.02);
   border-radius: 4px;
@@ -74,38 +62,38 @@ export default {
 }
 
 .cards__items h2 {
+  font-family: "Source Sans Pro";
   font-weight: 600;
   font-size: 20px;
   line-height: 25px;
   color: #3f3f3f;
+  padding-top: 16px;
   padding-left: 16px;
-  margin: 0;
-  margin-top: 16px;
 }
 
 .cards__items p {
-  max-width: 300px;
+  font-family: "Source Sans Pro";
   font-size: 16px;
   line-height: 20px;
   color: #3f3f3f;
+  padding-top: 16px;
   padding-left: 16px;
-  margin: 0;
-  margin-top: 16px;
 }
 
 .cards__items div {
+  font-family: "Source Sans Pro";
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
   color: #3f3f3f;
+  padding-top: 32px;
   padding-left: 16px;
-  margin: 0;
-  margin-top: 32px;
 }
 
 .cards__items__btn {
   height: 32px;
   background: #ff8484;
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   border: none;
@@ -128,51 +116,40 @@ export default {
   opacity: 0.6;
 }
 
-.list-item {
-  display: inline-block;
-  margin-right: 10px;
-}
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.5s ease;
-}
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-  transform: translateY(30px);
-}
-
 .cards-item {
   display: inline-block;
   margin-right: 10px;
 }
 .cards-enter-active,
 .cards-leave-active {
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
 .cards-enter-from,
 .cards-leave-to {
   opacity: 0;
+  -webkit-transform: translateY(30px);
+  -ms-transform: translateY(30px);
   transform: translateY(30px);
 }
 
 @media (max-width: 1200px) {
   .cards {
+    -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (max-width: 965px) {
+@media (max-width: 906px) {
   .cards {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 549px) {
   .cards {
-    align-items: center;
     margin-top: 70px;
   }
 }

@@ -1,11 +1,17 @@
 <template>
   <div class="container">
+    <preloader-page />
     <router-view :cards="cards" />
   </div>
 </template>
 
 <script>
+import preloaderPage from "./components/preloaderPage.vue";
 export default {
+  components: {
+    preloaderPage,
+  },
+
   data() {
     return {
       cards: [],
@@ -71,23 +77,21 @@ export default {
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Neonderthaw&family=Roboto+Condensed&family=Source+Sans+Pro:wght@200&display=swap");
-
 * {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+body {
+  background: rgba(255, 254, 251, 0.8);
 }
 
 .container {
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
-  padding: 32px 10px;
-}
-
-body {
-  background: #e5e5e5;
-  font-family: "Source Sans Pro", sans-serif;
+  padding: 32px;
 }
 </style>
