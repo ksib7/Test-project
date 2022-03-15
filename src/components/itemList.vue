@@ -35,7 +35,9 @@ export default {
 }
 
 .cards {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 16px 1fr 16px 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
   gap: 16px;
@@ -51,6 +53,8 @@ export default {
   width: 100%;
   min-height: 423px;
   background: #fffefb;
+  -webkit-box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04),
+    0px 6px 10px rgba(0, 0, 0, 0.02);
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04),
     0px 6px 10px rgba(0, 0, 0, 0.02);
   border-radius: 4px;
@@ -89,6 +93,7 @@ export default {
 .cards__items__btn {
   height: 32px;
   background: #ff8484;
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   border: none;
@@ -117,22 +122,28 @@ export default {
 }
 .cards-enter-active,
 .cards-leave-active {
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
 .cards-enter-from,
 .cards-leave-to {
   opacity: 0;
+  -webkit-transform: translateY(30px);
+  -ms-transform: translateY(30px);
   transform: translateY(30px);
 }
 
 @media (max-width: 1200px) {
   .cards {
+    -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 906px) {
   .cards {
+    -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
   }
 }

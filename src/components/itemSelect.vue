@@ -52,16 +52,26 @@ export default {
   line-height: 15px;
   color: #b4b4b4;
   background: #fffefb;
+  -webkit-box-shadow: 0px 2px 5px rgb(0 0 0 / 10%);
   box-shadow: 0px 2px 5px rgb(0 0 0 / 10%);
   border-radius: 4px;
   text-align: center;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
 .select__title {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -77,6 +87,7 @@ export default {
   width: 100%;
   color: #b4b4b4;
   background: #fffefb;
+  -webkit-box-shadow: 0px 2px 5px rgb(0 0 0 / 10%);
   box-shadow: 0px 2px 5px rgb(0 0 0 / 10%);
   border-radius: 4px;
 }

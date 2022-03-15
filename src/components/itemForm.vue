@@ -88,6 +88,8 @@ export default {
   width: 100%;
   height: 440px;
   background: #fffefb;
+  -webkit-box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04),
+    0px 6px 10px rgba(0, 0, 0, 0.02);
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04),
     0px 6px 10px rgba(0, 0, 0, 0.02);
   border-radius: 4px;
@@ -96,7 +98,12 @@ export default {
 .form__wrapper {
   max-width: 284px;
   margin: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 }
 
@@ -141,11 +148,40 @@ export default {
 
 .form input:nth-of-type(2) {
   min-height: 108px;
+  position: relative;
 }
 
 .form input:nth-of-type(2)::placeholder {
   position: absolute;
   top: 10px;
+}
+
+.form input::-webkit-input-placeholder {
+  font-family: "Source Sans Pro";
+  font-size: 12px;
+  line-height: 15px;
+  color: #b4b4b4;
+}
+
+.form input::-moz-placeholder {
+  font-family: "Source Sans Pro";
+  font-size: 12px;
+  line-height: 15px;
+  color: #b4b4b4;
+}
+
+.form input:-ms-input-placeholder {
+  font-family: "Source Sans Pro";
+  font-size: 12px;
+  line-height: 15px;
+  color: #b4b4b4;
+}
+
+.form input::-ms-input-placeholder {
+  font-family: "Source Sans Pro";
+  font-size: 12px;
+  line-height: 15px;
+  color: #b4b4b4;
 }
 
 .form input::placeholder {

@@ -55,13 +55,21 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Neonderthaw&family=Roboto+Condensed&family=Source+Sans+Pro:wght@200;400;600&display=swap");
 
 .items {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   gap: 16px;
 }
 
 .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   margin-bottom: 16px;
 }
@@ -84,8 +92,11 @@ export default {
   line-height: 15px;
   color: #b4b4b4;
   background: #fffefb;
+  -webkit-box-shadow: 0px 2px 5px rgb(0 0 0 / 10%);
   box-shadow: 0px 2px 5px rgb(0 0 0 / 10%);
   border-radius: 4px;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
   text-align: center;
 }
@@ -108,7 +119,12 @@ export default {
 
 @media (max-width: 549px) {
   .items {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
   }
 
